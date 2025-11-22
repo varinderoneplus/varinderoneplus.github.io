@@ -1,178 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VS — Apps & Games</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Studios | Mobile Games & Apps</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --bg-color: #0a0a12;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --primary: #00f2ff; /* Neon Cyan */
+            --secondary: #7000ff; /* Neon Purple */
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --cursor-size: 30px;
+        }
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; transition: .4s; }
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Hide default cursor */
+        }
 
-    body {
-        background: var(--bg);
-        color: var(--text);
-        overflow-x: hidden;
-        --bg: #000;
-        --text: #fff;
-        --card: #111;
-        --accent: #fff;
-    }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(112, 0, 255, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 242, 255, 0.08), transparent 25%);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
 
-    body.light {
-        --bg: #fff;
-        --text: #000;
-        --card: #eee;
-        --accent: #000;
-    }
+        /* --- CUSTOM SCROLLBAR --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--secondary), var(--primary));
+            border-radius: 4px;
+        }
 
-    /* Loader */
-    #loader {
-        position: fixed;
-        width: 100%; height: 100%;
-        background: var(--bg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 30px;
-        font-weight: 800;
-        color: var(--text);
-        z-index: 999;
-        animation: fadeOut .8s 1.4s forwards;
-    }
+        /* --- CUSTOM CURSOR --- */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
 
-    @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+        }
 
-    /* Typewriter Logo */
-    header {
-        text-align: center;
-        padding: 30px 0;
-        font-size: 38px;
-        font-weight: 800;
-        letter-spacing: 2px;
-    }
+        .cursor-outline {
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+            border: 1px solid var(--primary);
+            transition: width 0.2s, height 0.2s, top 0.1s, left 0.1s;
+        }
 
-    .typewriter span {
-        border-right: 2px solid var(--text);
-        padding-right: 5px;
-        animation: typing 2s steps(20), blink .5s infinite step-end alternate;
-    }
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
 
-    @keyframes typing { from { width: 0; } }
-    @keyframes blink { 50% { border-color: transparent; } }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
 
-    /* Hover animated titles */
-    .section-title {
-        font-size: 34px;
-        margin: 20px auto;
-        text-align: center;
-        font-weight: 700;
-        letter-spacing: 2px;
-        cursor: pointer;
-        padding: 10px;
-        transition: .4s ease;
-    }
-    .section-title:hover {
-        transform: scale(1.15) translateY(-5px);
-        text-shadow: 0 0 12px var(--accent);
-    }
+        .play-btn {
+            padding: 10px 20px;
+            border: 1px solid var(--primary);
+            border-radius: 30px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    /* Card Grid */
-    .card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-        width: 90%;
-        margin: auto;
-        padding-bottom: 40px;
-    }
+        .play-btn:hover {
+            background: var(--primary);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px var(--primary);
+        }
 
-    .card {
-        background: var(--card);
-        padding: 24px 20px;
-        border-radius: 16px;
-        text-align: center;
-        font-size: 18px;
-        border: 2px solid var(--accent);
-        cursor: not-allowed;
-        opacity: .85;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        gap: 10px;
-    }
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
 
-    /* Neon Glow Hover */
-    .card:hover {
-        opacity: 1;
-        transform: translateY(-10px) scale(1.05);
-        box-shadow: 0 0 18px var(--accent), 0 0 25px var(--accent);
-    }
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeUp 1s ease-out;
+        }
 
-    /* Animated Icons */
-    .icon {
-        font-size: 40px;
-        animation: bounce 1.5s infinite;
-    }
+        .hero span {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
 
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
-    }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+            animation: fadeUp 1.2s ease-out;
+        }
 
-    /* Page transition */
-    .fade-in { animation: fadeInSection .8s; }
-    @keyframes fadeInSection {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: none; }
-    }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            animation: bounce 2s infinite;
+            opacity: 0.7;
+        }
 
-    .mode-toggle {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        padding: 10px 22px;
-        border-radius: 25px;
-        background: var(--accent);
-        color: var(--bg);
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 600;
-        border: none;
-    }
+        /* --- SECTIONS GENERAL --- */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 80px 0 50px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
 
-</style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- CARDS GRID --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 100px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s;
+            backdrop-filter: blur(5px);
+            opacity: 0; /* For scroll animation */
+            transform: translateY(30px);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 30px -10px rgba(112, 0, 255, 0.3);
+        }
+
+        .card-image-placeholder {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.1);
+            font-size: 3rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* Coming Soon Overlay */
+        .coming-soon-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .icon-group i {
+            margin-right: 10px;
+            color: var(--text-muted);
+            transition: 0.3s;
+        }
+        
+        .card:hover .icon-group i {
+            color: #fff;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 50px 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            margin: 0 15px;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .cursor-dot, .cursor-outline { display: none; } /* Disable custom cursor on touch */
+            * { cursor: auto; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div id="loader">Loading...</div>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
 
-<header class="typewriter fade-in">
-    <span>VStudio</span>
-</header>
+    <!-- Header -->
+    <header>
+        <div class="logo">VS STUDIOS</div>
+        <a href="https://play.google.com/store/apps" target="_blank" class="play-btn">
+            <i class="fab fa-google-play"></i> Play Store
+        </a>
+    </header>
 
-<h2 class="section-title fade-in">🎮 Games</h2>
-<div class="card-grid fade-in">
-    <div class="card"><div class="icon">🎮</div> Coming Soon…</div>
-    <div class="card"><div class="icon">🕹️</div> Coming Soon…</div>
-    <div class="card"><div class="icon">⚔️</div> Coming Soon…</div>
-</div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Crafting Next-Gen <br> <span>Android Experiences</span></h1>
+        <p>Immersive games and utility apps designed for the modern mobile user. Innovation meets performance.</p>
+        
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-<h2 class="section-title fade-in">📱 Apps</h2>
-<div class="card-grid fade-in">
-    <div class="card"><div class="icon">📱</div> Coming Soon…</div>
-    <div class="card"><div class="icon">✨</div> Coming Soon…</div>
-    <div class="card"><div class="icon">⚡</div> Coming Soon…</div>
-</div>
+    <!-- Games Section -->
+    <div class="container">
+        <h2 class="section-title">Games</h2>
+        <div class="grid" id="games-grid">
+            
+            <!-- Game Card 1 -->
+            <div class="card">
+                <div class="card-image-placeholder">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3>Cyber Racer</h3>
+                <p>A high-octane racing game set in a dystopian future. Customize your ride and dominate the streets.</p>
+                <div class="card-footer">
+                    <span class="coming-soon-badge">Coming Soon</span>
+                    <div class="icon-group">
+                        <i class="fas fa-mobile-alt" title="Android"></i>
+                        <i class="fas fa-trophy" title="Achievements"></i>
+                    </div>
+                </div>
+            </div>
 
-<button class="mode-toggle" onclick="toggleMode()">Switch Mode</button>
+            <!-- Game Card 2 (Empty/Coming Soon) -->
+            <div class="card">
+                <div class="card-image-placeholder">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>Project: Mars</h3>
+                <p>Survival strategy game. Build your colony and survive the harsh red planet environment.</p>
+                <div class="card-footer">
+                    <span class="coming-soon-badge">In Development</span>
+                    <div class="icon-group">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                </div>
+            </div>
 
-<script>
-function toggleMode() {
-    document.body.classList.toggle("light");
-}
-</script>
+            <!-- Game Card 3 (Empty) -->
+            <div class="card">
+                <div class="card-image-placeholder">
+                    <i class="fas fa-ghost"></i>
+                </div>
+                <h3>Mystery Title</h3>
+                <p>Our developers are cooking up something scary. Stay tuned for updates.</p>
+                <div class="card-footer">
+                    <span class="coming-soon-badge">Concept Phase</span>
+                    <div class="icon-group">
+                        <i class="fas fa-question"></i>
+                    </div>
+                </div>
+            </div>
 
+        </div>
+    </div>
+
+    <!-- Apps Section -->
+    <div class="container">
+        <h2 class="section-title">Apps</h2>
+        <div class="grid" id="apps-grid">
+            
+            <!-- App Card 1 -->
+            <div class="card">
+                <div class="card-image-placeholder">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Focus Booster</h3>
+                <p>Productivity timer and task manager designed to keep you in the flow state.</p>
+                <div class="card-footer">
+                    <span class="coming-soon-badge">Coming Soon</span>
+                    <div class="icon-group">
+                        <i class="fab fa-android"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- App Card 2 (Empty) -->
+            <div class="card">
+                <div class="card-image-placeholder">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Color Schemer</h3>
+                <p>A tool for designers to generate and save palettes on the go.</p>
+                <div class="card-footer">
+                    <span class="coming-soon-badge">Coming Soon</span>
+                    <div class="icon-group">
+                        <i class="fab fa-android"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- App Card 3 (Empty) -->
+            <div class="card">
+                <div class="card-image-placeholder">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Utility Kit</h3>
+                <p>All-in-one converter and calculator for developers.</p>
+                <div class="card-footer">
+                    <span class="coming-soon-badge">Coming Soon</span>
+                    <div class="icon-group">
+                        <i class="fab fa-android"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2025 VS Studios. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // --- CUSTOM CURSOR LOGIC ---
+        const cursorDot = document.querySelector('[data-cursor-dot]');
+        const cursorOutline = document.querySelector('[data-cursor-outline]');
+
+        window.addEventListener("mousemove", function(e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // Dot follows instantly
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Outline follows with slight delay (animation via CSS)
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Interactive Hover States for Cursor
+        const interactiveElements = document.querySelectorAll('a, .card');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorOutline.style.width = '50px';
+                cursorOutline.style.height = '50px';
+                cursorOutline.style.borderColor = '#7000ff'; // Change to secondary color on hover
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorOutline.style.width = '30px';
+                cursorOutline.style.height = '30px';
+                cursorOutline.style.borderColor = '#00f2ff'; // Revert
+            });
+        });
+
+        // --- SCROLL ANIMATION LOGIC ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Add delay based on index for staggered effect
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100); // 100ms delay per card
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
