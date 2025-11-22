@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Varinder OnePlus — Apps & Games</title>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; transition: .4s; }
+
+    body {
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+        --bg: #000;
+        --text: #fff;
+        --card: #111;
+        --accent: #fff;
+    }
+
+    body.light {
+        --bg: #fff;
+        --text: #000;
+        --card: #eee;
+        --accent: #000;
+    }
+
+    /* Loader */
+    #loader {
+        position: fixed;
+        width: 100%; height: 100%;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        font-weight: 800;
+        color: var(--text);
+        z-index: 999;
+        animation: fadeOut .8s 1.4s forwards;
+    }
+
+    @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+    /* Typewriter Logo */
+    header {
+        text-align: center;
+        padding: 30px 0;
+        font-size: 38px;
+        font-weight: 800;
+        letter-spacing: 2px;
+    }
+
+    .typewriter span {
+        border-right: 2px solid var(--text);
+        padding-right: 5px;
+        animation: typing 2s steps(20), blink .5s infinite step-end alternate;
+    }
+
+    @keyframes typing { from { width: 0; } }
+    @keyframes blink { 50% { border-color: transparent; } }
+
+    /* Hover animated titles */
+    .section-title {
+        font-size: 34px;
+        margin: 20px auto;
+        text-align: center;
+        font-weight: 700;
+        letter-spacing: 2px;
+        cursor: pointer;
+        padding: 10px;
+        transition: .4s ease;
+    }
+    .section-title:hover {
+        transform: scale(1.15) translateY(-5px);
+        text-shadow: 0 0 12px var(--accent);
+    }
+
+    /* Card Grid */
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        width: 90%;
+        margin: auto;
+        padding-bottom: 40px;
+    }
+
+    .card {
+        background: var(--card);
+        padding: 24px 20px;
+        border-radius: 16px;
+        text-align: center;
+        font-size: 18px;
+        border: 2px solid var(--accent);
+        cursor: not-allowed;
+        opacity: .85;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Neon Glow Hover */
+    .card:hover {
+        opacity: 1;
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 0 18px var(--accent), 0 0 25px var(--accent);
+    }
+
+    /* Animated Icons */
+    .icon {
+        font-size: 40px;
+        animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+
+    /* Page transition */
+    .fade-in { animation: fadeInSection .8s; }
+    @keyframes fadeInSection {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: none; }
+    }
+
+    .mode-toggle {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        padding: 10px 22px;
+        border-radius: 25px;
+        background: var(--accent);
+        color: var(--bg);
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div id="loader">Loading...</div>
+
+<header class="typewriter fade-in">
+    <span>Varinder OnePlus</span>
+</header>
+
+<h2 class="section-title fade-in">🎮 Games</h2>
+<div class="card-grid fade-in">
+    <div class="card"><div class="icon">🎮</div> Coming Soon…</div>
+    <div class="card"><div class="icon">🕹️</div> Coming Soon…</div>
+    <div class="card"><div class="icon">⚔️</div> Coming Soon…</div>
+</div>
+
+<h2 class="section-title fade-in">📱 Apps</h2>
+<div class="card-grid fade-in">
+    <div class="card"><div class="icon">📱</div> Coming Soon…</div>
+    <div class="card"><div class="icon">✨</div> Coming Soon…</div>
+    <div class="card"><div class="icon">⚡</div> Coming Soon…</div>
+</div>
+
+<button class="mode-toggle" onclick="toggleMode()">Switch Mode</button>
+
+<script>
+function toggleMode() {
+    document.body.classList.toggle("light");
+}
+</script>
+
+</body>
+</html>
