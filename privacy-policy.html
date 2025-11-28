@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MiniTuber Lite — Privacy & Camera Policy</title>
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#7dd3fc; --glass:rgba(255,255,255,0.04);
+      --radius:14px; --gap:18px; --maxw:880px;
+      color-scheme: dark;
+    }
+    [data-theme="light"]{
+      --bg:#f6f8fb; --card:#ffffff; --muted:#556070; --accent:#0ea5e9; --glass:rgba(0,0,0,0.03);
+      color-scheme: light;
+    }
+
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,var(--bg), #071124 140%);}
+    .wrap{max-width:var(--maxw);margin:48px auto;padding:28px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);backdrop-filter:blur(6px);box-shadow:0 8px 30px rgba(2,6,23,0.6);}
+
+    header{display:flex;align-items:center;gap:16px;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),#60a5fa);box-shadow:0 6px 20px rgba(10,10,20,0.5);}
+    .logo svg{width:34px;height:34px;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.45));}
+    h1{font-size:20px;margin:0;color:var(--accent)}
+    .meta{font-size:13px;color:var(--muted)}
+
+    .controls{display:flex;gap:10px;align-items:center}
+    button.control{background:var(--glass);border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600}
+    button.control:active{transform:translateY(1px)}
+
+    main{margin-top:22px}
+    .card{background:var(--card);padding:18px;border-radius:12px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.03)}
+    .card h2{margin:0 0 8px 0;font-size:16px}
+    .card p{margin:6px 0;color:var(--muted);line-height:1.5}
+
+    .section-title{display:flex;justify-content:space-between;align-items:center}
+    .toggle{background:transparent;border:0;color:var(--accent);cursor:pointer;font-weight:700}
+
+    .hidden{display:none}
+
+    footer{margin-top:16px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
+
+    @media (max-width:520px){.wrap{margin:20px;padding:18px}}
+
+    /* subtle focus styles for a11y */
+    button:focus, a:focus{outline:3px solid rgba(125,211,252,0.18);outline-offset:3px}
+  </style>
+</head>
+<body>
+  <div class="wrap" role="document">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- MiniTUBER logo (simple camera + smile) -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="2" y="6" width="20" height="12" rx="3" fill="white" opacity="0.14"/>
+            <path d="M7 9h2v2H7z" fill="white" opacity="0.9"/>
+            <circle cx="12" cy="12" r="2.6" fill="white" opacity="0.98"/>
+          </svg>
+        </div>
+        <div>
+          <h1>MiniTuber Lite — Privacy & Camera Policy</h1>
+          <div class="meta">Last Updated: <span id="lastUpdated">[Date]</span></div>
+        </div>
+      </div>
+      <div class="controls" role="toolbar" aria-label="Document controls">
+        <button class="control" id="copyBtn">Copy text</button>
+        <button class="control" id="printBtn">Print / Save PDF</button>
+        <button class="control" id="themeBtn" aria-pressed="false">Toggle Theme</button>
+      </div>
+    </header>
+
+    <main>
+
+      <article class="card" id="intro">
+        <div class="section-title">
+          <h2>1. Introduction</h2>
+          <button class="toggle" data-target="introBody" aria-expanded="true">Hide</button>
+        </div>
+        <div id="introBody">
+          <p>MiniTuber Lite (<q>we</q>, <q>our</q>, or <q>the Application</q>) is designed to prioritize your privacy. This policy explains how we handle your data.</p>
+        </div>
+      </article>
+
+      <article class="card" id="camera">
+        <div class="section-title">
+          <h2>2. Camera Usage &amp; Face Data</h2>
+          <button class="toggle" data-target="cameraBody" aria-expanded="true">Hide</button>
+        </div>
+        <div id="cameraBody">
+          <p><strong>Uses:</strong> MiniTuber Lite uses your device's camera solely to track facial movements (head position, blinking, mouth movement) to animate a virtual avatar in real-time.</p>
+          <p><strong>Local Processing:</strong> All face tracking is performed locally on your device using the CPU/GPU.</p>
+          <p><strong>No Transmission:</strong> No images, video feeds, or facial geometry data are sent to external servers, the cloud, or third parties.</p>
+          <p><strong>No Storage:</strong> The Application does not record or store your camera feed or facial data.</p>
+        </div>
+      </article>
+
+      <article class="card" id="data">
+        <div class="section-title">
+          <h2>3. Data Collection</h2>
+          <button class="toggle" data-target="dataBody" aria-expanded="true">Hide</button>
+        </div>
+        <div id="dataBody">
+          <p>We do not collect personal information, usage statistics, or identifiers. The Application operates offline (except for optional update checks initiated by the user).</p>
+        </div>
+      </article>
+
+      <article class="card" id="third">
+        <div class="section-title">
+          <h2>4. Third-Party Services</h2>
+          <button class="toggle" data-target="thirdBody" aria-expanded="true">Hide</button>
+        </div>
+        <div id="thirdBody">
+          <p>The Application may provide links to external sites (e.g., Microsoft Store, Support Website). We are not responsible for the privacy practices of these external sites.</p>
+        </div>
+      </article>
+
+      <article class="card" id="contact">
+        <div class="section-title">
+          <h2>5. Contact</h2>
+          <button class="toggle" data-target="contactBody" aria-expanded="true">Hide</button>
+        </div>
+        <div id="contactBody">
+          <p>If you have questions about this policy, please contact us at: <a href="mailto:varinderoneplus@gmail.com">varinderoneplus@gmail.com</a></p>
+        </div>
+      </article>
+
+    </main>
+
+    <footer>
+      <div class="meta">Made for MiniTuber Lite — a privacy-first avatar app.</div>
+      <div style="font-size:12px;color:var(--muted)">Built: Single-file HTML • Accessible • Print-friendly</div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function(){
+      // Set the Last Updated date to today's date by default in YYYY-MM-DD format
+      const lastUpdatedEl = document.getElementById('lastUpdated');
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth()+1).padStart(2,'0');
+      const dd = String(today.getDate()).padStart(2,'0');
+      lastUpdatedEl.textContent = yyyy + '-' + mm + '-' + dd;
+
+      // Toggle sections
+      document.querySelectorAll('.toggle').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const target = document.getElementById(btn.dataset.target);
+          const isHidden = target.classList.toggle('hidden');
+          btn.textContent = isHidden ? 'Show' : 'Hide';
+          btn.setAttribute('aria-expanded', String(!isHidden));
+        });
+      });
+
+      // Copy the raw policy text to clipboard (plain text)
+      const copyBtn = document.getElementById('copyBtn');
+      copyBtn.addEventListener('click', async ()=>{
+        const parts = [];
+        document.querySelectorAll('main article').forEach(a=>{
+          const h = a.querySelector('h2').innerText.trim();
+          const paragraphs = Array.from(a.querySelectorAll('p')).map(p=>p.innerText.trim()).join('\n\n');
+          parts.push(h + '\n' + paragraphs);
+        });
+        const text = 'Last Updated: ' + lastUpdatedEl.textContent + '\n\n' + parts.join('\n\n');
+        try{
+          await navigator.clipboard.writeText(text);
+          copyBtn.textContent = 'Copied!';
+          setTimeout(()=>copyBtn.textContent = 'Copy text',1600);
+        }catch(e){
+          alert('Could not copy automatically. Select the text and copy manually.');
+        }
+      });
+
+      // Print
+      document.getElementById('printBtn').addEventListener('click', ()=>{
+        window.print();
+      });
+
+      // Theme toggle
+      const themeBtn = document.getElementById('themeBtn');
+      const root = document.documentElement;
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+      if(prefersLight) root.setAttribute('data-theme','light');
+      themeBtn.addEventListener('click', ()=>{
+        if(root.getAttribute('data-theme') === 'light'){
+          root.removeAttribute('data-theme');
+          themeBtn.setAttribute('aria-pressed','false');
+        }else{
+          root.setAttribute('data-theme','light');
+          themeBtn.setAttribute('aria-pressed','true');
+        }
+      });
+
+      // Improve keyboard accessibility: allow toggles with Enter/Space
+      document.querySelectorAll('.toggle').forEach(btn=>{
+        btn.tabIndex = 0;
+        btn.addEventListener('keydown', (e)=>{
+          if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+        });
+      });
+
+    })();
+  </script>
+</body>
+</html>
