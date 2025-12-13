@@ -32,7 +32,10 @@
     main{margin-top:22px}
     .card{background:var(--card);padding:18px;border-radius:12px;margin-bottom:12px;border:1px solid rgba(255,255,255,0.03)}
     .card h2{margin:0 0 8px 0;font-size:16px}
-    .card p{margin:6px 0;color:var(--muted);line-height:1.5}
+    .card p{margin:6px 0;color:var(--muted);line-height:1.5; font-size: 15px;}
+    .card ul { margin: 8px 0; padding-left: 20px; color: var(--muted); }
+    .card li { margin-bottom: 6px; }
+    .card strong { color: var(--accent); }
 
     .section-title{display:flex;justify-content:space-between;align-items:center}
     .toggle{background:transparent;border:0;color:var(--accent);cursor:pointer;font-weight:700}
@@ -41,7 +44,7 @@
 
     footer{margin-top:16px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;align-items:center}
 
-    @media (max-width:520px){.wrap{margin:20px;padding:18px}}
+    @media (max-width:520px){.wrap{margin:20px;padding:18px} header{flex-direction: column; align-items: flex-start;} .controls{margin-top:10px;}}
 
     /* subtle focus styles for a11y */
     button:focus, a:focus{outline:3px solid rgba(125,211,252,0.18);outline-offset:3px}
@@ -60,8 +63,8 @@
           </svg>
         </div>
         <div>
-          <h1>MiniTuber Lite — Privacy & Camera Policy</h1>
-          <div class="meta">Last Updated: <span id="lastUpdated">[Date]</span></div>
+          <h1>Privacy Policy for MiniTuber Lite</h1>
+          <div class="meta">Last Updated: <span id="lastUpdated">2025-12-13</span></div>
         </div>
       </div>
       <div class="controls" role="toolbar" aria-label="Document controls">
@@ -73,76 +76,90 @@
 
     <main>
 
-      <article class="card" id="intro">
+      <article class="card" id="collect">
         <div class="section-title">
-          <h2>1. Introduction</h2>
-          <button class="toggle" data-target="introBody" aria-expanded="true">Hide</button>
+          <h2>1. Information We Collect</h2>
+          <button class="toggle" data-target="collectBody" aria-expanded="true">Hide</button>
         </div>
-        <div id="introBody">
-          <p>MiniTuber Lite (<q>we</q>, <q>our</q>, or <q>the Application</q>) is designed to prioritize your privacy. This policy explains how we handle your data.</p>
+        <div id="collectBody">
+          <p>MiniTuber Lite (<q>we</q>, <q>our</q>, or <q>us</q>) is committed to protecting your privacy. <strong>MiniTuber Lite does NOT collect, store, or transmit any personal data to external servers.</strong></p>
         </div>
       </article>
 
       <article class="card" id="camera">
         <div class="section-title">
-          <h2>2. Camera Usage &amp; Face Data</h2>
+          <h2>2. Camera and Facial Data</h2>
           <button class="toggle" data-target="cameraBody" aria-expanded="true">Hide</button>
         </div>
         <div id="cameraBody">
-          <p><strong>Uses:</strong> MiniTuber Lite uses your device's camera solely to track facial movements (head position, blinking, mouth movement) to animate a virtual avatar in real-time.</p>
-          <p><strong>Local Processing:</strong> All face tracking is performed locally on your device using the CPU/GPU.</p>
-          <p><strong>No Transmission:</strong> No images, video feeds, or facial geometry data are sent to external servers, the cloud, or third parties.</p>
-          <p><strong>No Storage:</strong> The Application does not record or store your camera feed or facial data.</p>
+          <ul>
+            <li><strong>Camera Access:</strong> The application requires access to your computer's webcam solely for the purpose of real-time face tracking.</li>
+            <li><strong>Facial Data:</strong> We process video frames locally on your device to detect facial landmarks (e.g., eye blink, mouth movement, head rotation).</li>
+            <li><strong>No Storage:</strong> This video data and the detected facial landmarks are processed in real-time memory (RAM) and are immediately discarded after the avatar is rendered. No video footage or facial data is ever saved to your hard drive or transmitted to the internet.</li>
+          </ul>
         </div>
       </article>
 
-      <article class="card" id="data">
+      <article class="card" id="usage">
         <div class="section-title">
-          <h2>3. Data Collection</h2>
-          <button class="toggle" data-target="dataBody" aria-expanded="true">Hide</button>
+          <h2>3. How We Use Information</h2>
+          <button class="toggle" data-target="usageBody" aria-expanded="true">Hide</button>
         </div>
-        <div id="dataBody">
-          <p>We do not collect personal information, usage statistics, or identifiers. The Application operates offline (except for optional update checks initiated by the user).</p>
+        <div id="usageBody">
+          <p>The data captured by your camera is used exclusively to:</p>
+          <ul>
+            <li>Animate the virtual avatar character in real-time.</li>
+            <li>Sync the avatar's movements with your head and facial expressions.</li>
+          </ul>
         </div>
       </article>
 
-      <article class="card" id="third">
+      <article class="card" id="sharing">
         <div class="section-title">
-          <h2>4. Third-Party Services</h2>
-          <button class="toggle" data-target="thirdBody" aria-expanded="true">Hide</button>
+          <h2>4. Third-Party Data Sharing & Security</h2>
+          <button class="toggle" data-target="sharingBody" aria-expanded="true">Hide</button>
         </div>
-        <div id="thirdBody">
-          <p>The Application may provide links to external sites (e.g., Microsoft Store, Support Website). We are not responsible for the privacy practices of these external sites.</p>
+        <div id="sharingBody">
+          <p>Since MiniTuber Lite is a standalone desktop application that processes data locally:</p>
+          <ul>
+            <li>We do <strong>not</strong> share your data with third parties.</li>
+            <li>We do <strong>not</strong> use analytics software to track your behavior.</li>
+            <li>We do <strong>not</strong> sell your data.</li>
+          </ul>
+          <p>We prioritize security by ensuring that all processing occurs strictly on your local device. Because no personal data is transmitted over the internet by our application, the risk of data interception is eliminated.</p>
         </div>
       </article>
 
       <article class="card" id="contact">
         <div class="section-title">
-          <h2>5. Contact</h2>
+          <h2>5. Contact Us</h2>
           <button class="toggle" data-target="contactBody" aria-expanded="true">Hide</button>
         </div>
         <div id="contactBody">
-          <p>If you have questions about this policy, please contact us at: <a href="mailto:varinderoneplus@gmail.com">varinderoneplus@gmail.com</a></p>
+          <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
+          <p>
+            <strong>Email:</strong> <a href="mailto:varinderoneplus@gmail.com">varinderoneplus@gmail.com</a><br>
+            <strong>Developer:</strong> Varinder Singh
+          </p>
         </div>
       </article>
 
     </main>
 
     <footer>
-      <div class="meta">Made for MiniTuber Lite — a privacy-first avatar app.</div>
+      <div class="meta">MiniTuber Lite — Privacy First.</div>
     </footer>
 
   </div>
 
   <script>
     (function(){
-      // Set the Last Updated date to today's date by default in YYYY-MM-DD format
+      // Set the Last Updated date to current date
       const lastUpdatedEl = document.getElementById('lastUpdated');
       const today = new Date();
-      const yyyy = today.getFullYear();
-      const mm = String(today.getMonth()+1).padStart(2,'0');
-      const dd = String(today.getDate()).padStart(2,'0');
-      lastUpdatedEl.textContent = yyyy + '-' + mm + '-' + dd;
+      // Format: Month Day, Year
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      lastUpdatedEl.textContent = today.toLocaleDateString('en-US', options);
 
       // Toggle sections
       document.querySelectorAll('.toggle').forEach(btn=>{
@@ -160,10 +177,16 @@
         const parts = [];
         document.querySelectorAll('main article').forEach(a=>{
           const h = a.querySelector('h2').innerText.trim();
-          const paragraphs = Array.from(a.querySelectorAll('p')).map(p=>p.innerText.trim()).join('\n\n');
-          parts.push(h + '\n' + paragraphs);
+          // Improved text extraction for lists
+          let bodyText = "";
+          const contentDiv = a.querySelector('div[id$="Body"]');
+          if(contentDiv) {
+             // Basic text extraction to keep it readable
+             bodyText = contentDiv.innerText.trim(); 
+          }
+          parts.push(h + '\n' + bodyText);
         });
-        const text = 'Last Updated: ' + lastUpdatedEl.textContent + '\n\n' + parts.join('\n\n');
+        const text = 'Privacy Policy for MiniTuber Lite\nLast Updated: ' + lastUpdatedEl.textContent + '\n\n' + parts.join('\n\n');
         try{
           await navigator.clipboard.writeText(text);
           copyBtn.textContent = 'Copied!';
@@ -183,6 +206,7 @@
       const root = document.documentElement;
       const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
       if(prefersLight) root.setAttribute('data-theme','light');
+      
       themeBtn.addEventListener('click', ()=>{
         if(root.getAttribute('data-theme') === 'light'){
           root.removeAttribute('data-theme');
@@ -193,7 +217,7 @@
         }
       });
 
-      // Improve keyboard accessibility: allow toggles with Enter/Space
+      // Accessibility
       document.querySelectorAll('.toggle').forEach(btn=>{
         btn.tabIndex = 0;
         btn.addEventListener('keydown', (e)=>{
