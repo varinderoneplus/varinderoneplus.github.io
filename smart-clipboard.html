@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Clipboard Pro | The Ultimate Productivity Tool</title>
+    <title>Smart Clipboard | The Ultimate Productivity Tool</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
@@ -15,23 +15,15 @@
             --bg-color: #0a0a12;
             --card-bg: rgba(255, 255, 255, 0.03);
             --primary: #00f2ff; /* Neon Cyan */
-            --secondary: #525df5; /* Matches your Python App Button Color */
+            --secondary: #525df5; /* Teal/Blue */
             --text-main: #ffffff;
             --text-muted: #b0b0b0;
             --cursor-size: 30px;
         }
 
         /* --- RESET & BASE --- */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: none; /* Hide default cursor */
-        }
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
 
         body {
             font-family: 'Outfit', sans-serif;
@@ -44,360 +36,178 @@
             line-height: 1.6;
         }
 
-        /* --- CUSTOM SCROLLBAR --- */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg-color);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(var(--secondary), var(--primary));
-            border-radius: 4px;
-        }
+        /* --- SCROLLBAR --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(var(--secondary), var(--primary)); border-radius: 4px; }
 
         /* --- CUSTOM CURSOR --- */
-        .cursor-dot,
-        .cursor-outline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none;
         }
-
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--primary);
-        }
-
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--primary); }
         .cursor-outline {
-            width: var(--cursor-size);
-            height: var(--cursor-size);
+            width: var(--cursor-size); height: var(--cursor-size);
             border: 1px solid var(--primary);
             transition: width 0.2s, height 0.2s, top 0.1s, left 0.1s, border-color 0.2s;
         }
 
         /* --- HEADER --- */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(15px);
-            background: rgba(10, 10, 18, 0.7);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; position: fixed; width: 100%; top: 0; z-index: 100;
+            backdrop-filter: blur(15px); background: rgba(10, 10, 18, 0.7);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.5rem; font-weight: 700;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: 1px; text-transform: uppercase;
+            display: flex; align-items: center; gap: 10px;
         }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
+        .nav-links { display: flex; gap: 30px; }
         .nav-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s;
+            color: var(--text-main); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s;
         }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
+        .nav-links a:hover { color: var(--primary); }
         .play-btn {
-            padding: 8px 20px;
-            border: 1px solid var(--primary);
-            border-radius: 30px;
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            padding: 8px 20px; border: 1px solid var(--primary); border-radius: 30px;
+            color: var(--primary); text-decoration: none; font-size: 0.9rem; font-weight: 600;
+            transition: 0.3s; display: flex; align-items: center; gap: 8px;
         }
-
-        .play-btn:hover {
-            background: var(--primary);
-            color: var(--bg-color);
-            box-shadow: 0 0 15px var(--primary);
-        }
+        .play-btn:hover { background: var(--primary); color: var(--bg-color); box-shadow: 0 0 15px var(--primary); }
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 95vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            position: relative;
+            height: 90vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 0 20px; position: relative;
         }
-
         .hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            font-weight: 700;
+            font-size: 4.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 700;
             background: linear-gradient(135deg, #fff 0%, #a5a5a5 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: fadeUp 1s ease-out;
         }
-
         .hero span {
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-
         .hero p {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin-bottom: 40px;
-            animation: fadeUp 1.2s ease-out;
+            font-size: 1.3rem; color: var(--text-muted); max-width: 700px;
+            margin-bottom: 40px; animation: fadeUp 1.2s ease-out;
         }
-
         .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            animation: bounce 2s infinite;
-            opacity: 0.7;
-            font-size: 1.5rem;
-            color: var(--secondary);
+            position: absolute; bottom: 40px; animation: bounce 2s infinite;
+            opacity: 0.7; font-size: 1.5rem; color: var(--secondary);
         }
 
-        /* --- SECTIONS GENERAL --- */
+        /* --- COMMON LAYOUTS --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin: 100px 0 60px;
-            position: relative;
+            text-align: center; font-size: 2.5rem; margin: 100px 0 60px; position: relative;
         }
-        
         .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
+            content: ''; display: block; width: 60px; height: 3px;
             background: linear-gradient(90deg, var(--secondary), var(--primary));
-            margin: 15px auto 0;
-            border-radius: 2px;
+            margin: 15px auto 0; border-radius: 2px;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- CARDS GRID --- */
+        /* --- FEATURE CARDS (Grid) --- */
         .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; margin-bottom: 50px;
         }
-
         .card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 30px;
-            position: relative;
-            overflow: hidden;
+            border-radius: 20px; padding: 30px;
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s;
             backdrop-filter: blur(10px);
-            opacity: 0;
-            transform: translateY(30px);
         }
-
-        .card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
+            transform: translateY(-10px); border-color: var(--primary);
             box-shadow: 0 10px 40px -10px rgba(0, 242, 255, 0.15);
         }
-
         .card i.feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem; margin-bottom: 20px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
+        .card p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
 
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #fff;
+        /* --- MANUAL/GUIDE CARDS (List Style) --- */
+        .manual-grid { display: flex; flex-direction: column; gap: 30px; }
+        .manual-card {
+            background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px; padding: 30px; transition: transform 0.3s;
         }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.6;
+        .manual-card:hover { border-color: var(--secondary); transform: translateX(10px); }
+        .manual-card h3 {
+            color: var(--primary); font-size: 1.5rem; margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;
         }
-
-        /* --- DOCUMENTATION SECTION STYLE --- */
-        .doc-section {
-            margin-bottom: 100px;
+        .manual-card h4 { color: #fff; margin: 20px 0 10px; font-size: 1.1rem; }
+        .manual-card ul { list-style: none; padding-left: 10px; }
+        .manual-card li {
+            color: var(--text-muted); margin-bottom: 10px; position: relative; padding-left: 20px;
         }
-
-        .step-card {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            transition: 0.3s;
+        .manual-card li::before {
+            content: '•'; color: var(--secondary); position: absolute; left: 0; font-weight: bold;
         }
-
-        .step-card:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(82, 93, 245, 0.3);
+        
+        .key-box {
+            display: inline-block; background: linear-gradient(135deg, #222, #333);
+            border: 1px solid #555; border-radius: 6px; padding: 5px 12px;
+            color: var(--primary); font-family: monospace; font-size: 1.1rem;
+            font-weight: bold; box-shadow: 0 4px 0 #111; margin: 10px 0;
         }
-
-        .step-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--secondary);
-            min-width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--secondary);
-            border-radius: 50%;
-        }
-
-        .step-content h4 {
-            color: var(--primary);
-            margin-bottom: 8px;
-            font-size: 1.2rem;
-        }
-
-        .step-content p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
         .highlight {
-            color: #fff;
-            background: rgba(82, 93, 245, 0.3);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 0.9em;
+            color: #fff; background: rgba(82, 93, 245, 0.3);
+            padding: 2px 6px; border-radius: 4px; font-size: 0.9em;
         }
 
-        /* --- BADGES --- */
+        /* --- DOWNLOAD BOX --- */
+        .download-box {
+            text-align: center; background: var(--card-bg); padding: 40px;
+            border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+            margin: 50px auto; max-width: 500px;
+        }
         .badge {
-            display: inline-block;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
+            display: inline-block; padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px; color: #fff; text-decoration: none; margin: 5px;
             transition: 0.3s;
-            margin-right: 10px;
         }
-
-        .badge:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: rgba(0, 242, 255, 0.05);
-        }
-
-        .badge.secondary:hover {
-            border-color: var(--secondary);
-            color: var(--secondary);
-            background: rgba(82, 93, 245, 0.05);
-        }
+        .badge:hover { background: var(--secondary); border-color: var(--secondary); }
 
         /* --- FOOTER --- */
         footer {
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 60px 20px;
-            text-align: center;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            border-top: 1px solid rgba(255,255,255,0.05); padding: 40px;
+            text-align: center; color: var(--text-muted); font-size: 0.9rem;
         }
-
-        .footer-links {
-            margin-bottom: 20px;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            margin: 0 15px;
-            font-size: 1.5rem;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-            transform: scale(1.1);
-        }
-
-        .copyright {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.3);
-        }
+        .footer-links a { color: var(--text-muted); margin: 0 10px; font-size: 1.2rem; transition: 0.3s; }
+        .footer-links a:hover { color: var(--primary); }
 
         /* --- ANIMATIONS --- */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
             40% {transform: translateY(-10px);}
             60% {transform: translateY(-5px);}
         }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
+            .hero h1 { font-size: 2.5rem; }
             .nav-links { display: none; }
             .cursor-dot, .cursor-outline { display: none; } 
             * { cursor: auto; }
-            .step-card { flex-direction: column; }
         }
     </style>
 </head>
@@ -410,205 +220,242 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <i class="fa-solid fa-clipboard-list" style="color: var(--primary);"></i>
-            SmartClip Pro
+            <i class="fa-solid fa-clipboard-check" style="color: var(--primary); margin-right: 10px;"></i>
+            Smart Clipboard
         </div>
-        
         <nav class="nav-links">
             <a href="#features">Features</a>
-            <a href="#guide">How to Use</a>
-            <a href="#download">Download</a>
+            <a href="#manual">User Manual</a>
+            <a href="#faq">FAQ</a>
         </nav>
-
-        <a href="#download" class="play-btn">
-           <i class="fa-brands fa-github"></i> Get it Now
-        </a>
+        <a href="#download" class="play-btn"><i class="fa-brands fa-microsoft"></i> Get App</a>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <h1>Copy Smarter <br> <span>Paste Faster</span></h1>
         <p>The ultimate clipboard manager optimized for developers and power users. Capture images, code, colors, and links automatically.</p>
-        
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </div>
+        <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
     </section>
 
-    <!-- Features Section -->
+    <!-- FEATURES GRID -->
     <div class="container" id="features">
         <h2 class="section-title">Powerful Features</h2>
         <div class="grid">
             
-            <!-- Feature 1 -->
             <div class="card">
                 <i class="fas fa-layer-group feature-icon"></i>
                 <h3>Smart History</h3>
                 <p>Never lose a snippet again. Automatically categorizes copied items into Text, Images, Code, and Links with timestamp grouping.</p>
             </div>
 
-            <!-- Feature 2 -->
             <div class="card">
                 <i class="fas fa-ghost feature-icon"></i>
                 <h3>Ghost Mode</h3>
-                <p>Privacy first. Enable Incognito Mode to stop tracking sensitive data like passwords or private keys instantly.</p>
+                <p>Privacy first. Enable Incognito Mode (Red Ghost) to stop tracking sensitive data like passwords instantly.</p>
             </div>
 
-            <!-- Feature 3 -->
             <div class="card">
                 <i class="fas fa-palette feature-icon"></i>
-                <h3>Dev Tools</h3>
-                <p>Copy a hex code? Get a color preview instantly. Copy code? We highlight it. Need a QR code? Generate one in a click.</p>
+                <h3>Color Detection</h3>
+                <p>Copy a hex code like #525df5? We render a color swatch instantly. Supports Hex, RGB, and HSL formats.</p>
             </div>
 
-            <!-- Feature 4 -->
             <div class="card">
                 <i class="fas fa-image feature-icon"></i>
-                <h3>Media Ready</h3>
-                <p>Copy images directly to the clipboard history. Hover over any image entry to see a full-size preview instantly.</p>
+                <h3>Image Preview</h3>
+                <p>Copy images directly to history. Hover over any image entry to see a full-size, high-quality preview instantly.</p>
             </div>
 
         </div>
     </div>
 
-    <!-- Documentation / Guide Section -->
-    <div class="container" id="guide">
-        <h2 class="section-title">How It Works</h2>
-        <div class="doc-section">
-            
-            <div class="card step-card visible">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h4>Launch & Forget</h4>
-                    <p>Run the application. It sits quietly in your system tray, monitoring your clipboard with negligible resource usage.</p>
-                </div>
+    <!-- USER MANUAL SECTION -->
+    <div class="container" id="manual">
+        <h2 class="section-title">User Manual & Guide</h2>
+        <div class="manual-grid">
+
+            <!-- 1. Getting Started -->
+            <div class="manual-card visible">
+                <h3>1. Getting Started</h3>
+                <h4>Running the App</h4>
+                <ul>
+                    <li>Once installed, Smart Clipboard runs quietly in the background to monitor your clipboard.</li>
+                    <li><strong>System Tray:</strong> You will see the Smart Clipboard icon (clipboard symbol) in your Windows System Tray (near the clock at the bottom right).</li>
+                    <li><strong>Opening the Window:</strong> You do not need to click the icon. Simply press the Global Hotkey to open the overlay.</li>
+                </ul>
+                <h4>Default Hotkey</h4>
+                <div class="key-box">Ctrl + Shift + V</div>
+                <p style="color: var(--text-muted); margin-top: 10px;">Press this combination anywhere on your computer to bring up your clipboard history.</p>
             </div>
 
-            <div class="card step-card visible">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h4>The Magic Hotkey</h4>
-                    <p>Press <span class="highlight">Ctrl + Shift + V</span> (configurable) anywhere to open the smart overlay. Use arrow keys to navigate.</p>
-                </div>
-            </div>
-
-            <div class="card step-card visible">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h4>Edit & Organize</h4>
-                    <p>Right-click any item to Edit the text, Open URLs in your browser, or Pin important snippets to the top.</p>
-                </div>
-            </div>
-
-            <div class="card step-card visible">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h4>Export & Backup</h4>
-                    <p>Use the <span class="highlight">Export</span> button to save your history to JSON. Easily restore it later on another machine.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Download Section -->
-    <div class="container" id="download">
-        <h2 class="section-title">Download Now</h2>
-        <div class="grid" style="justify-content: center; display: flex; flex-wrap: wrap;">
-            
-            <div class="card" style="max-width: 450px; text-align: center;">
-                <i class="fab fa-python feature-icon" style="font-size: 3rem;"></i>
-                <h3>Smart Clipboard Pro</h3>
-                <p style="margin-bottom: 30px;">Version 2.0 | Windows 10/11 | Python Based</p>
+            <!-- 2. The Interface -->
+            <div class="manual-card visible">
+                <h3>2. The Interface</h3>
+                <p style="color: var(--text-muted); margin-bottom: 15px;">The main window works like a "deck of cards." Every time you copy something (Ctrl+C), a new card is added to the top of the list.</p>
                 
-                <div>
-                    <a href="#" class="badge">
-                        <i class="fas fa-download"></i> Download EXE
-                    </a>
-                    <a href="https://github.com" target="_blank" class="badge secondary">
-                        <i class="fab fa-github"></i> View Source
-                    </a>
-                </div>
-                <div style="margin-top: 20px;">
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">Requires no installation. Portable Ready.</p>
-                </div>
+                <h4>Top Header</h4>
+                <ul>
+                    <li><strong>📥 Import:</strong> Load a previously saved clipboard history file.</li>
+                    <li><strong>📤 Export:</strong> Save your current history to a file (great for backups).</li>
+                    <li><strong>👻 Ghost Mode:</strong> Toggle "Incognito." When enabled (Red), the app stops recording new items. Use this when copying passwords.</li>
+                    <li><strong>⚙️ Settings:</strong> Change hotkeys, limits, and preferences.</li>
+                </ul>
+
+                <h4>Search & Filter</h4>
+                <ul>
+                    <li><strong>Search Bar:</strong> Type keywords to instantly find past clips.</li>
+                    <li><strong>Filter Dropdown:</strong> Click "All" to filter by specific types: Text, Images, Links, or Code.</li>
+                </ul>
+            </div>
+
+            <!-- 3. Key Features -->
+            <div class="manual-card visible">
+                <h3>3. Key Features</h3>
+                
+                <h4>🎨 Smart Color Preview</h4>
+                <p style="color: var(--text-muted);">Designers love this! If you copy a Hex code (e.g., #525df5) or an RGB value, Smart Clipboard automatically detects it and shows a visual color swatch next to the text.</p>
+
+                <h4>🖼️ Image Preview</h4>
+                <ul>
+                    <li>When you copy a screenshot or image, it is saved to the list.</li>
+                    <li><strong>How to Preview:</strong> Simply hover your mouse over the small image icon on the card. A full-size preview will pop up instantly.</li>
+                </ul>
+
+                <h4>🔗 QR Code Generator</h4>
+                <ul>
+                    <li>Need to send a link to your phone? Find the text or link in the list.</li>
+                    <li>Click the <strong>QR Icon (🔳)</strong> on the right side of the row.</li>
+                    <li>Scan the code with your mobile device.</li>
+                </ul>
+
+                <h4>📝 Quick Edit</h4>
+                <ul>
+                    <li>Need to modify text before pasting? Click the <strong>Pencil Icon (✎)</strong>.</li>
+                    <li>Edit the text in the popup window.</li>
+                    <li>Use the quick tools to convert text to UPPERCASE, lowercase, or Capitalize. Click Save.</li>
+                </ul>
+            </div>
+
+            <!-- 4. Managing History -->
+            <div class="manual-card visible">
+                <h3>4. Managing Your History</h3>
+                
+                <h4>Pasting Items</h4>
+                <ul>
+                    <li>Click on any item row, or navigate with Arrow Keys and press Enter.</li>
+                    <li>If "Auto Paste" is enabled in Settings, the item will immediately paste into your active document.</li>
+                </ul>
+
+                <h4>Pinning Items 📌</h4>
+                <p style="color: var(--text-muted);">Prevent important items from being deleted. Click the Pin Icon to lock an item to your history. It will stay there even if you clear your history.</p>
+
+                <h4>Deleting Items</h4>
+                <ul>
+                    <li><strong>Single Delete:</strong> Click the Trash Icon (🗑️) on the row.</li>
+                    <li><strong>Multi-Select Delete:</strong> Click the small circle checkbox on the left of the items you want to remove. A floating "Delete Selected" button will appear. Click it to remove items.</li>
+                </ul>
+
+                <h4>Clear All</h4>
+                <p style="color: var(--text-muted);">Click the "Clear All" button in the bottom toolbar to remove all unpinned items instantly.</p>
+            </div>
+
+            <!-- 5. Settings -->
+            <div class="manual-card visible">
+                <h3>5. Settings & Customization</h3>
+                <p style="color: var(--text-muted);">Click the Settings (⚙️) button to configure the app:</p>
+                <ul>
+                    <li><strong>Hotkey:</strong> Click "Change" and press your desired key combination to set a new shortcut.</li>
+                    <li><strong>History Limit:</strong> Set how many items the app remembers (Default: 50). Oldest items are removed automatically when the limit is reached.</li>
+                    <li><strong>Auto Paste:</strong>
+                        <br> <span class="highlight">ON</span>: Clicking an item pastes it immediately.
+                        <br> <span class="highlight">OFF</span>: Clicking an item copies it to your clipboard; you must manually press Ctrl+V to paste.
+                    </li>
+                </ul>
             </div>
 
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- FAQ SECTION -->
+    <div class="container" id="faq">
+        <h2 class="section-title">Troubleshooting</h2>
+        <div class="manual-grid">
+            <div class="manual-card visible">
+                <h4>Q: The window won't open when I press the hotkey.</h4>
+                <p style="color: var(--text-muted);">A: Check the System Tray (near your clock). If the Smart Clipboard icon isn't there, launch the app from the Start Menu. If it is there, check your Settings to ensure the hotkey hasn't been changed.</p>
+                
+                <h4 style="margin-top: 20px;">Q: Images aren't showing up.</h4>
+                <p style="color: var(--text-muted);">A: The app saves images to a local folder. Ensure you have permission to write files in the installation directory.</p>
+
+                <h4 style="margin-top: 20px;">Q: How do I stop the app from running?</h4>
+                <p style="color: var(--text-muted);">A: Right-click the Smart Clipboard icon in the System Tray and select "Exit".</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DOWNLOAD SECTION -->
+    <div class="container" id="download">
+        <div class="download-box">
+            <i class="fa-solid fa-laptop-file" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+    
+            <h3>Ready to Boost Productivity?</h3>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">Version 1.0 | Windows 10/11</p>
+            
+            <a href="#" class="badge"><i class="fab fa-microsoft"></i> Get from Store</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
     <footer>
         <div class="footer-links">
-            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="#" title="Email Support"><i class="fas fa-envelope"></i></a>
-            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://varinderoneplus.github.io/"><i class="fab fa-github"></i></a>
+            <a href="mailto:varinderoneplus@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="copyright">
-            &copy; 2025 Smart Clipboard Pro. All rights reserved. <br>
-            Designed for productivity.
+            &copy; 2025 VS Creation. All rights reserved.
         </div>
     </footer>
 
     <script>
-        // --- CUSTOM CURSOR LOGIC ---
+        // --- CUSTOM CURSOR ---
         const cursorDot = document.querySelector('[data-cursor-dot]');
         const cursorOutline = document.querySelector('[data-cursor-outline]');
 
         window.addEventListener("mousemove", function(e) {
             const posX = e.clientX;
             const posY = e.clientY;
-
-            // Dot follows instantly
             cursorDot.style.left = `${posX}px`;
             cursorDot.style.top = `${posY}px`;
-
-            // Outline follows with slight delay
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
+            cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
         });
 
-        // Interactive Hover States
-        const interactiveElements = document.querySelectorAll('a, .card, .play-btn');
-        
-        interactiveElements.forEach(el => {
+        // Interactive Hover
+        document.querySelectorAll('a, .manual-card, .play-btn, .card').forEach(el => {
             el.addEventListener('mouseenter', () => {
-                cursorOutline.style.width = '50px';
-                cursorOutline.style.height = '50px';
-                cursorOutline.style.borderColor = '#525df5'; // Secondary color (Teal/Blue)
-                cursorOutline.style.backgroundColor = 'rgba(82, 93, 245, 0.1)';
+                cursorOutline.style.width = '50px'; cursorOutline.style.height = '50px';
+                cursorOutline.style.borderColor = '#525df5'; cursorOutline.style.backgroundColor = 'rgba(82, 93, 245, 0.1)';
             });
             el.addEventListener('mouseleave', () => {
-                cursorOutline.style.width = '30px';
-                cursorOutline.style.height = '30px';
-                cursorOutline.style.borderColor = '#00f2ff'; // Primary color
-                cursorOutline.style.backgroundColor = 'transparent';
+                cursorOutline.style.width = '30px'; cursorOutline.style.height = '30px';
+                cursorOutline.style.borderColor = '#00f2ff'; cursorOutline.style.backgroundColor = 'transparent';
             });
         });
 
-        // --- SCROLL ANIMATION ---
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry, index) => {
+        // --- SCROLL REVEAL ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, 100); 
-                    observer.unobserve(entry.target);
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, observerOptions);
+        });
 
-        const scrollElements = document.querySelectorAll('.card, .section-title');
-        scrollElements.forEach(el => {
-            el.classList.add('fade-init'); 
+        document.querySelectorAll('.manual-card, .section-title, .download-box, .card').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
             observer.observe(el);
         });
     </script>
