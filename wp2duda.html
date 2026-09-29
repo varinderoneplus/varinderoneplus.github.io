@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Clipboard | The Ultimate Productivity Tool</title>
+    <title>WP2Duda | WordPress to Duda Migration Tool</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
@@ -211,6 +211,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Custom Cursor -->
@@ -220,12 +221,12 @@
     <!-- Header -->
     <header>
         <div class="logo">
-            <i class="fa-solid fa-clipboard-check" style="color: var(--primary); margin-right: 10px;"></i>
-            Smart Clipboard
+            <i class="fa-solid fa-right-left" style="color: var(--primary); margin-right: 10px;"></i>
+            WP2Duda
         </div>
         <nav class="nav-links">
             <a href="#features">Features</a>
-            <a href="#manual">User Manual</a>
+            <a href="#manual">User Guide</a>
             <a href="#faq">FAQ</a>
         </nav>
         <a href="#download" class="play-btn"><i class="fa-brands fa-microsoft"></i> Get App</a>
@@ -233,8 +234,8 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Copy Smarter <br> <span>Paste Faster</span></h1>
-        <p>The ultimate clipboard manager optimized for developers and power users. Capture images, code, colors, and links automatically.</p>
+        <h1>WordPress <br> <span>to Duda, Simplified</span></h1>
+        <p>A Windows desktop tool for migrating WordPress blog content to Duda with structured parsing, content preservation, and a streamlined import workflow.</p>
         <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
     </section>
 
@@ -242,29 +243,29 @@
     <div class="container" id="features">
         <h2 class="section-title">Powerful Features</h2>
         <div class="grid">
-            
+
             <div class="card">
-                <i class="fas fa-layer-group feature-icon"></i>
-                <h3>Smart History</h3>
-                <p>Never lose a snippet again. Automatically categorizes copied items into Text, Images, Code, and Links with timestamp grouping.</p>
+                <i class="fas fa-cloud-download-alt feature-icon"></i>
+                <h3>WordPress Blog Import</h3>
+                <p>Connect to a WordPress website and retrieve available blog posts for migration using supported WordPress API endpoints.</p>
             </div>
 
             <div class="card">
-                <i class="fas fa-ghost feature-icon"></i>
-                <h3>Ghost Mode</h3>
-                <p>Privacy first. Enable Incognito Mode (Red Ghost) to stop tracking sensitive data like passwords instantly.</p>
+                <i class="fas fa-sitemap feature-icon"></i>
+                <h3>Structured Content Parsing</h3>
+                <p>Parse supported headings, paragraphs, lists, tables, FAQs, images, links, and other structured blog content for migration.</p>
             </div>
 
             <div class="card">
-                <i class="fas fa-palette feature-icon"></i>
-                <h3>Color Detection</h3>
-                <p>Copy a hex code like #525df5? We render a color swatch instantly. Supports Hex, RGB, and HSL formats.</p>
+                <i class="fas fa-file-export feature-icon"></i>
+                <h3>Duda Blog Migration</h3>
+                <p>Prepare structured WordPress blog content for the Duda import workflow while preserving supported content elements.</p>
             </div>
 
             <div class="card">
-                <i class="fas fa-image feature-icon"></i>
-                <h3>Image Preview</h3>
-                <p>Copy images directly to history. Hover over any image entry to see a full-size, high-quality preview instantly.</p>
+                <i class="fas fa-globe feature-icon"></i>
+                <h3>RSS &amp; Cloudflare Quick Tunnel</h3>
+                <p>Create a temporary RSS migration endpoint and use Cloudflare Quick Tunnel when Duda needs temporary public access to local migration data.</p>
             </div>
 
         </div>
@@ -272,105 +273,101 @@
 
     <!-- USER MANUAL SECTION -->
     <div class="container" id="manual">
-        <h2 class="section-title">User Manual & Guide</h2>
+        <h2 class="section-title">User Guide &amp; Migration Workflow</h2>
         <div class="manual-grid">
 
             <!-- 1. Getting Started -->
             <div class="manual-card visible">
                 <h3>1. Getting Started</h3>
-                <h4>Running the App</h4>
+                <h4>Running WP2Duda</h4>
                 <ul>
-                    <li>Once installed, Smart Clipboard runs quietly in the background to monitor your clipboard.</li>
-                    <li><strong>System Tray:</strong> You will see the Smart Clipboard icon (clipboard symbol) in your Windows System Tray (near the clock at the bottom right).</li>
-                    <li><strong>Opening the Window:</strong> You do not need to click the icon. Simply press the Global Hotkey to open the overlay.</li>
+                    <li>Launch WP2Duda from the Windows Start Menu or desktop shortcut.</li>
+                    <li><strong>WordPress Website:</strong> Enter the WordPress website you want to migrate.</li>
+                    <li><strong>Post Discovery:</strong> WP2Duda connects to the website and retrieves available blog posts.</li>
                 </ul>
-                <h4>Default Hotkey</h4>
-                <div class="key-box">Ctrl + Shift + V</div>
-                <p style="color: var(--text-muted); margin-top: 10px;">Press this combination anywhere on your computer to bring up your clipboard history.</p>
+                <h4>Migration Workflow</h4>
+                <div class="key-box">WordPress → Parse → Export → Duda</div>
+                <p style="color: var(--text-muted); margin-top: 10px;">WP2Duda retrieves WordPress content, structures supported elements, and prepares the data for the Duda import workflow.</p>
             </div>
 
             <!-- 2. The Interface -->
             <div class="manual-card visible">
                 <h3>2. The Interface</h3>
-                <p style="color: var(--text-muted); margin-bottom: 15px;">The main window works like a "deck of cards." Every time you copy something (Ctrl+C), a new card is added to the top of the list.</p>
-                
-                <h4>Top Header</h4>
+                <p style="color: var(--text-muted); margin-bottom: 15px;">The WP2Duda interface is focused on a simple migration flow: connect to WordPress, review posts, process content, and prepare the migration output.</p>
+
+                <h4>WordPress Connection</h4>
                 <ul>
-                    <li><strong>📥 Import:</strong> Load a previously saved clipboard history file.</li>
-                    <li><strong>📤 Export:</strong> Save your current history to a file (great for backups).</li>
-                    <li><strong>👻 Ghost Mode:</strong> Toggle "Incognito." When enabled (Red), the app stops recording new items. Use this when copying passwords.</li>
-                    <li><strong>⚙️ Settings:</strong> Change hotkeys, limits, and preferences.</li>
+                    <li><strong>Website URL:</strong> Enter the WordPress website you want to migrate.</li>
+                    <li><strong>Post Discovery:</strong> Retrieve available blog posts from the connected WordPress website.</li>
+                    <li><strong>Post Selection:</strong> Select the content you want to process.</li>
+                    <li><strong>Migration:</strong> Generate the structured output used by the Duda import workflow.</li>
                 </ul>
 
-                <h4>Search & Filter</h4>
+                <h4>Content Processing</h4>
                 <ul>
-                    <li><strong>Search Bar:</strong> Type keywords to instantly find past clips.</li>
-                    <li><strong>Filter Dropdown:</strong> Click "All" to filter by specific types: Text, Images, Links, or Code.</li>
+                    <li><strong>Parser:</strong> Converts supported WordPress content into structured migration elements.</li>
+                    <li><strong>Export:</strong> Saves generated migration data locally for the next step.</li>
                 </ul>
             </div>
 
             <!-- 3. Key Features -->
             <div class="manual-card visible">
                 <h3>3. Key Features</h3>
-                
-                <h4>🎨 Smart Color Preview</h4>
-                <p style="color: var(--text-muted);">Designers love this! If you copy a Hex code (e.g., #525df5) or an RGB value, Smart Clipboard automatically detects it and shows a visual color swatch next to the text.</p>
 
-                <h4>🖼️ Image Preview</h4>
+                <h4>📝 Structured Content Parsing</h4>
+                <p style="color: var(--text-muted);">WP2Duda identifies supported WordPress content and prepares it as structured migration elements rather than treating the article as one unstructured block.</p>
+
+                <h4>🖼️ Images &amp; Links</h4>
                 <ul>
-                    <li>When you copy a screenshot or image, it is saved to the list.</li>
-                    <li><strong>How to Preview:</strong> Simply hover your mouse over the small image icon on the card. A full-size preview will pop up instantly.</li>
+                    <li>Process images included in WordPress posts.</li>
+                    <li><strong>Image and Link Support:</strong> Preserve supported links and image relationships during migration preparation.</li>
                 </ul>
 
-                <h4>🔗 QR Code Generator</h4>
+                <h4>❓ FAQs &amp; Tables</h4>
                 <ul>
-                    <li>Need to send a link to your phone? Find the text or link in the list.</li>
-                    <li>Click the <strong>QR Icon (🔳)</strong> on the right side of the row.</li>
-                    <li>Scan the code with your mobile device.</li>
+                    <li>Recognize supported FAQ structures, including details/summary blocks.</li>
+                    <li>Process tables and other supported structured content.</li>
                 </ul>
 
-                <h4>📝 Quick Edit</h4>
+                <h4>📦 Duda-Friendly Migration Data</h4>
                 <ul>
-                    <li>Need to modify text before pasting? Click the <strong>Pencil Icon (✎)</strong>.</li>
-                    <li>Edit the text in the popup window.</li>
-                    <li>Use the quick tools to convert text to UPPERCASE, lowercase, or Capitalize. Click Save.</li>
+                    <li>Prepare headings, paragraphs, lists, images, FAQs, tables, and related supported elements for Duda.</li>
+                    <li>Use the generated RSS workflow to import prepared blog content into Duda.</li>
                 </ul>
             </div>
 
-            <!-- 4. Managing History -->
+            <!-- 4. Migration & Export -->
             <div class="manual-card visible">
-                <h3>4. Managing Your History</h3>
-                
-                <h4>Pasting Items</h4>
+                <h3>4. Migration &amp; Export</h3>
+
+                <h4>Selecting Posts</h4>
                 <ul>
-                    <li>Click on any item row, or navigate with Arrow Keys and press Enter.</li>
-                    <li>If "Auto Paste" is enabled in Settings, the item will immediately paste into your active document.</li>
+                    <li>Review the posts retrieved from the connected WordPress website.</li>
+                    <li>Select the posts you want to migrate.</li>
                 </ul>
 
-                <h4>Pinning Items 📌</h4>
-                <p style="color: var(--text-muted);">Prevent important items from being deleted. Click the Pin Icon to lock an item to your history. It will stay there even if you clear your history.</p>
+                <h4>Generating Migration Data 📦</h4>
+                <p style="color: var(--text-muted);">WP2Duda parses selected content and prepares the structured migration data used by the Duda import workflow.</p>
 
-                <h4>Deleting Items</h4>
+                <h4>Local Export</h4>
                 <ul>
-                    <li><strong>Single Delete:</strong> Click the Trash Icon (🗑️) on the row.</li>
-                    <li><strong>Multi-Select Delete:</strong> Click the small circle checkbox on the left of the items you want to remove. A floating "Delete Selected" button will appear. Click it to remove items.</li>
+                    <li><strong>Export:</strong> Generated migration files are saved locally on your computer.</li>
+                    <li><strong>Organization:</strong> WP2Duda keeps export data organized for the Duda import process.</li>
                 </ul>
 
-                <h4>Clear All</h4>
-                <p style="color: var(--text-muted);">Click the "Clear All" button in the bottom toolbar to remove all unpinned items instantly.</p>
+                <h4>Duda Import</h4>
+                <p style="color: var(--text-muted);">The RSS migration workflow can expose generated content temporarily so Duda can retrieve it during import.</p>
             </div>
 
-            <!-- 5. Settings -->
+            <!-- 5. Migration Setup -->
             <div class="manual-card visible">
-                <h3>5. Settings & Customization</h3>
-                <p style="color: var(--text-muted);">Click the Settings (⚙️) button to configure the app:</p>
+                <h3>5. Migration Setup &amp; Cloudflare</h3>
+                <p style="color: var(--text-muted);">WP2Duda keeps the migration workflow focused on the WordPress source and Duda destination:</p>
                 <ul>
-                    <li><strong>Hotkey:</strong> Click "Change" and press your desired key combination to set a new shortcut.</li>
-                    <li><strong>History Limit:</strong> Set how many items the app remembers (Default: 50). Oldest items are removed automatically when the limit is reached.</li>
-                    <li><strong>Auto Paste:</strong>
-                        <br> <span class="highlight">ON</span>: Clicking an item pastes it immediately.
-                        <br> <span class="highlight">OFF</span>: Clicking an item copies it to your clipboard; you must manually press Ctrl+V to paste.
-                    </li>
+                    <li><strong>WordPress Source:</strong> Enter the source website and retrieve its available blog content.</li>
+                    <li><strong>Local Server:</strong> WP2Duda can run a temporary local HTTP server for the migration workflow.</li>
+                    <li><strong>Cloudflare Quick Tunnel:</strong> When required, the local migration endpoint can be exposed temporarily so Duda can access it.</li>
+                    <li><strong>Cleanup:</strong> Stop the migration server and tunnel when the import workflow is finished.</li>
                 </ul>
             </div>
 
@@ -379,17 +376,20 @@
 
     <!-- FAQ SECTION -->
     <div class="container" id="faq">
-        <h2 class="section-title">Troubleshooting</h2>
+        <h2 class="section-title">Troubleshooting &amp; FAQ</h2>
         <div class="manual-grid">
             <div class="manual-card visible">
-                <h4>Q: The window won't open when I press the hotkey.</h4>
-                <p style="color: var(--text-muted);">A: Check the System Tray (near your clock). If the Smart Clipboard icon isn't there, launch the app from the Start Menu. If it is there, check your Settings to ensure the hotkey hasn't been changed.</p>
-                
-                <h4 style="margin-top: 20px;">Q: Images aren't showing up.</h4>
-                <p style="color: var(--text-muted);">A: The app saves images to a local folder. Ensure you have permission to write files in the installation directory.</p>
+                <h4>Q: WordPress posts are not being found.</h4>
+                <p style="color: var(--text-muted);">A: Verify that the WordPress website URL is correct and publicly accessible. The site must expose the WordPress API or supported endpoints required by WP2Duda.</p>
 
-                <h4 style="margin-top: 20px;">Q: How do I stop the app from running?</h4>
-                <p style="color: var(--text-muted);">A: Right-click the Smart Clipboard icon in the System Tray and select "Exit".</p>
+                <h4 style="margin-top: 20px;">Q: The migration content is incomplete.</h4>
+                <p style="color: var(--text-muted);">A: WP2Duda supports specific structured content types. Review the source post and confirm that the content uses supported WordPress HTML structures.</p>
+
+                <h4 style="margin-top: 20px;">Q: Cloudflare Quick Tunnel is not working.</h4>
+                <p style="color: var(--text-muted);">A: Make sure Cloudflared is installed and available to WP2Duda. Check your internet connection and that the temporary tunnel can start successfully.</p>
+
+                <h4 style="margin-top: 20px;">Q: Can I migrate all my WordPress posts?</h4>
+                <p style="color: var(--text-muted);">A: WP2Duda can retrieve available WordPress posts and process the content selected through the migration workflow. The exact number depends on the source website and its accessible WordPress API data.</p>
             </div>
         </div>
     </div>
@@ -397,27 +397,28 @@
     <!-- DOWNLOAD SECTION -->
     <div class="container" id="download">
         <div class="download-box">
-            <i class="fa-solid fa-laptop-file" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
-    
-            <h3>Ready to Boost Productivity?</h3>
-            <p style="color: var(--text-muted); margin-bottom: 30px;">Version 1.0 | Windows 10/11</p>
-            
-            <a href="https://apps.microsoft.com/store/detail/9P7QM6951QNW?cid=DevShareMCLPCS" target="blank" class="badge"><i class="fab fa-microsoft"></i> Get from Store</a>
+            <i class="fa-solid fa-right-left" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+
+            <h3>Ready to Migrate Your WordPress Blogs to Duda?</h3>
+            <p style="color: var(--text-muted); margin-bottom: 30px;">WP2Duda 1.0.0 | Windows 10/11</p>
+
+            <a href="https://apps.microsoft.com/detail/9NBNJZGMW16L" target="_blank" class="badge"><i class="fab fa-microsoft"></i> Get from Microsoft Store</a>
         </div>
     </div>
 
     <!-- FOOTER -->
     <footer>
         <div class="footer-links">
-              <a href="https://varinderoneplus.github.io/"><i class="fab fa-github"></i></a>
+            <a href="https://varinderoneplus.github.io/"><i class="fab fa-github"></i></a>
             <a href="mailto:varinderoneplus@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="copyright">
-            &copy; 2025 VS Creation. All rights reserved.
+            &copy; 2026 VS Creation. All rights reserved.
         </div>
     </footer>
 
     <script>
+
         // --- CUSTOM CURSOR ---
         const cursorDot = document.querySelector('[data-cursor-dot]');
         const cursorOutline = document.querySelector('[data-cursor-outline]');
@@ -458,6 +459,7 @@
             el.style.transition = 'all 0.6s ease-out';
             observer.observe(el);
         });
+    
     </script>
 </body>
 </html>
